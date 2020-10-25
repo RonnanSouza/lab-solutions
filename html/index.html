@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+      $(".chosen-select").chosen({
+      no_results_text: "Oops, nothing found!"})
+    </script>
+  </head>
+  
+  <body>
+    <h2>
+      Novo atendimento
+    </h2>
+    <form>
+      <div>
+        <label for="fname">Paciente:</label><br>
+        <input type="text" id="fname" name="fname">
+        <button> Buscar Paciente existente</button>
+      </div>
+      <div>
+        <label for="lname">Telefone:</label><br>
+        <input type="text" id="lname" name="lname">
+      </div>
+      
+      <div>
+        <label for="lname">Sexo de nascimento</label>
+        <select name="sex" id="sex" form="sexform">
+          <option value="null">-</option>
+          <option value="female">Feminino</option>
+          <option value="male">Masculino</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="lname">Exames solicitados</label>
+      </div>
+      <div>
+        <select name="exams" multiple>
+          <option value=""></option>
+          <option>Glicose</option>
+          <option>Colesterol</option>
+          <option>Creatinina</option>
+          <option>Ureia</option>
+          <option>Triglicerídeos</option>
+        </select>
+      </div>
+      <div>
+        <button>
+          Criar atendimento
+        </button>
+      </div>
+
+    </form>
+  </body>
+</html>
