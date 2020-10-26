@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ThemeContext from '../../ThemeContext'
 
-function ExamList() {
+function ExamList(props) {
 
   const [list, setList] = useState([]);
   const [loadErr, setLoadErr] = useState(null);
@@ -31,14 +31,9 @@ function ExamList() {
     console.log("NOT IMPLEMENTED YET")
   }
 
-  function changeTheme() {
-    
-  }
-
   return (
     <div>
-      <h4>Theme: {theme}</h4>
-      <button onClick={() => {changeTheme()}}> Change Theme</button>
+      <button onClick={props.changeTheme}> Change Theme</button>
       <ul>
         {list.map(exam => (
           <li key={exam.name}>
