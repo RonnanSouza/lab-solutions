@@ -6,6 +6,10 @@ Lab solutions is a software to help you manage your clinic lab.
 
 `make setup`
 
+## Tests
+
+`make test`
+
 ## Running frontend
 
 `make front`
@@ -13,3 +17,13 @@ Lab solutions is a software to help you manage your clinic lab.
 ## Running backend
 
 `make back`
+
+## DevWeb Deliveries
+
+- [x] Backend
+- [x] Basic Components
+- [x] useEffect
+- [x] Jest
+- [x] React Context
+- [ ] React Router
+- [ ] Storage/Service Worker

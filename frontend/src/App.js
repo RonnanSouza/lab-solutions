@@ -16,6 +16,7 @@ function App() {
 
   return (
     <ThemeContext.Provider value={theme}>
+      <h2> Exam List</h2>
       <ExamList changeTheme={toggleTheme}/>
     </ThemeContext.Provider>
   );

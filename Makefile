@@ -6,6 +6,10 @@ back:
 front:
 	cd ./frontend && npm start
 
+.PHONY: test
+test:
+	cd ./frontend && npm test
+	
 .PHONY: setup
 setup:
 	docker-compose -f ./backend/docker-compose.yaml up -d
