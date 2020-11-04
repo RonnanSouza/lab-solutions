@@ -21,5 +21,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.exams = require("./examModel")(sequelize, Sequelize);
+db.pacients = require("./pacientModel")(sequelize, Sequelize);
 
 module.exports = db;
