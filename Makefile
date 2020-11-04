@@ -15,3 +15,7 @@ setup:
 	docker-compose -f ./backend/docker-compose.yaml up -d
 	cd ./backend && npm install
 	cd ./frontend && npm install
+
+.PHONY: deps
+deps:
+	docker-compose -f ./backend/docker-compose.yaml up -d

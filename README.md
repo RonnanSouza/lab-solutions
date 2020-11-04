@@ -25,5 +25,5 @@ Lab solutions is a software to help you manage your clinic lab.
 - [x] useEffect
 - [x] Jest
 - [x] React Context
-- [ ] React Router
+- [x] React Router
 - [ ] Storage/Service Worker
