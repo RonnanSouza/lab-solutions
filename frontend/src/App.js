@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import './components/exam/Exam';
+import NewExam from './components/newExam/newExam';
 import ExamList from './components/examList/ExamList';
 import { ThemeContext, themes } from './ThemeContext';
 import { Button, Navbar, Nav, NavDropdown, Form, FormControl} from 'react-bootstrap';
@@ -71,11 +71,11 @@ function App() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/novoPaciente">Paciente</Nav.Link>
-            <NavDropdown title="Paciente" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Adicionar</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            <NavDropdown title="Pacientes" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/novoPaciente">Adicionar</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Exames" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/novoExame">Adicionar</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form inline>
@@ -91,6 +91,9 @@ function App() {
         </Route>
         <Route path="/novoPaciente" exact>
           <NewPacient></NewPacient>
+        </Route>
+        <Route path="/novoExame" exact>
+          <NewExam></NewExam>
         </Route>
       </Switch>
       

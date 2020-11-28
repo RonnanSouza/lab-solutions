@@ -15,8 +15,12 @@ exports.create = (req, res) => {
       const exam = {
         name: req.body.name,
         description: req.body.description,
-        code: req.body.code
+        code: req.body.code,
+        value: req.body.value,
+        ref_value: req.body.ref_value
       };
+      
+      console.log(exam);
     
       // Save Tutorial in the database
       Exam.create(exam)

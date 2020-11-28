@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Container, Form, Row, Col} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
@@ -21,9 +21,9 @@ function NewPacient() {
         .then(response => {
           if (response.status == 200) {
             response.json()
-            history.goBack()
+            history.push("/")
           } else {
-            // alert.show("Paciente Inválido!")
+            // TODO
           }
 
         });
@@ -31,6 +31,8 @@ function NewPacient() {
   
   return (
     <Container>
+      <h2>Adicionar Paciente</h2>
+      <br/>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Form>
           <Form.Group as={Row} controlId="formPacientName">
@@ -100,37 +102,6 @@ function NewPacient() {
       </form>
 
     </Container>
-    
-    // <form onSubmit={handleSubmit(onSubmit)}>
-    //   <div class="form-group">
-    //   <label>
-    //       Nome: <input type="text" name="name" ref={register}/>
-    //     </label>
-    //   </div>
-    //   <div>
-    //     <label>
-    //       Documento de identidade: <input type="text" name="id" ref={register}/>
-    //     </label>
-    //   </div>
-    //   <div>
-    //     <label>
-    //       Idade: <input type="number" name="age" ref={register}/>
-    //     </label>
-    //   </div>
-    //   <div>
-    //     <label>
-    //       Endereço: <input type="text" name="address" ref={register}/>
-    //     </label>
-    //   </div>
-    //   <div>
-    //     <label> Sexo</label><br/>
-    //     <input type="radio" name="gender" value="male" ref={register}/> Masculino<br/>
-    //     <input type="radio" name="gender" value="female" ref={register}/> Feminino<br/>
-    //   </div>
-    //   <div>
-    //     <button> Novo Paciente</button>
-    //   </div>
-    // </form>
   )
   
 }
