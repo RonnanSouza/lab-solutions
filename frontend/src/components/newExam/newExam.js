@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Container, Form, Row, Col} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
@@ -19,7 +19,6 @@ function NewExam() {
       fetch('http://localhost:8080/api/exams', requestOptions)
         .then(response => {
           if (response.status === 200) {
-            console.log(response.json())
             history.push("/")
           } else {
             // TODO
@@ -27,6 +26,7 @@ function NewExam() {
 
         });
   })
+
   return (
     <Container>
       <h2> Adicionar Exame</h2>

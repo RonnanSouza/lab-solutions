@@ -2,20 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Form, Row, Col} from 'react-bootstrap';
 
 function NewResult(props) {
-  // const { examId, setExamId } = useState(-1);
-  let examId = -1;
-
-  const handleChange = ((e) => {
-    examId = e.target.value
-  })
+  const [result, setResult] = useState();
+  const [examId, setExamId] = useState();
 
   useEffect(() => {
     if (props.procedureId > 0) {
       const data = {
         exam_id: examId,
         treatment_id: props.procedureId,
-        value: 0
+        value: result
       }
+      console.log(data)
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -26,8 +23,7 @@ function NewResult(props) {
       fetch('http://localhost:8080/api/results', requestOptions)
       .then(response => {
         if (response.status === 200) {
-          console.log(response.json())
-          // history.push("/")
+          
         } else {
           // TODO
         }
@@ -42,7 +38,7 @@ function NewResult(props) {
       </Form.Label>
       <Row>
         <Col>
-          <Form.Control as="select" onChange={handleChange} custom>
+          <Form.Control as="select" onChange={(e) => setExamId(e.target.value)} custom>
             <option>Selecione um Exame</option>
             {props.exams.map(exam => (
               <option value={exam.id}>{exam.name}</option>
@@ -50,7 +46,7 @@ function NewResult(props) {
           </Form.Control>
         </Col>
         <Col>
-        <Form.Control type="number" name="value" placeholder="Resultado" />
+        <Form.Control type="number" name="value" onChange={(e) => setResult(e.target.value)} placeholder="Resultado" />
         </Col>
       </Row>
     

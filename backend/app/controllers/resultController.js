@@ -11,9 +11,9 @@ exports.create = (req, res) => {
     
       const result = {
         value: req.body.value,
-        exam_id: req.body.exam_id
+        examId: req.body.exam_id,
+        treatmentId: req.body.treatment_id
       };
-      console.log(result)
     
       Result.create(result)
         .then(data => {

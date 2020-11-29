@@ -14,7 +14,7 @@ function NewProcedure() {
 
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/treatments',
+    fetch('http://localhost:8080/api/exams',
     {
       method: 'GET',
       mode: 'cors',
@@ -36,28 +36,31 @@ function NewProcedure() {
       };
 
       
-    fetch('http://localhost:8080/api/exams', requestOptions)
+    fetch('http://localhost:8080/api/treatments', requestOptions)
     .then(response => {
       if (response.status === 200) {
-        console.log(response.json())
-        history.push("/")
+        response.json().then(json => (
+          setProcedureId(json.id)
+        ))
+        setTimeout(() => (history.push("/")), 500)  // TODO fix it ASAP
       } else {
         // TODO
       }
     });
   })
+
   return (
     <Container>
       <h2> Adicionar Resultados</h2>
       <br/>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Form>
-          <Form.Group as={Row} controlId="formExamName">
+          <Form.Group as={Row} controlId="formProcedurePacientId">
             <Form.Label column sm={2}>
               Paciente
             </Form.Label>
             <Col sm={10}>
-              <Form.Control type="number" name="pacientId" ref={register} placeholder="Documento de Identidade" />
+              <Form.Control type="number" name="pacient_id" ref={register} placeholder="Documento de Identidade" />
             </Col>
           </Form.Group>
           <fieldset>
