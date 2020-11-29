@@ -40,7 +40,7 @@ function NewExam() {
                   Nome
                 </Form.Label>
                 <Col sm={10}>
-                  <Form.Control type="text" name="name" ref={register} placeholder="Nome do exame" />
+                  <Form.Control required type="text" name="name" ref={register} placeholder="Nome do exame" />
                 </Col>
               </Form.Group>
             </Col>
@@ -50,14 +50,14 @@ function NewExam() {
                   Código
                 </Form.Label>
                 <Col sm={10}>
-                  <Form.Control type="text" name="code" ref={register} placeholder="Código do exame" />
+                  <Form.Control required type="text" name="code" ref={register} placeholder="Código do exame" />
                 </Col>
               </Form.Group>
             </Col>
           </Row>
           <Form.Group as={Row} controlId="formExamDescription">
             <Form.Label column sm={2}>
-              Código
+              Descrição
             </Form.Label>
             <Col sm={10}>
               <Form.Control type="text" name="description" ref={register} placeholder="Descrição do exame" />
@@ -72,10 +72,10 @@ function NewExam() {
               </Form.Label>
               <Row>
                 <Col sm={6}>
-                  <Form.Control type="number" name="ref_value.male_upper" ref={register} placeholder="Máximo" />
+                  <Form.Control required type="number" name="ref_value.male_upper" ref={register} placeholder="Máximo" />
                 </Col>
                 <Col sm={6}>
-                  <Form.Control type="number" name="ref_value.male_lower" ref={register} placeholder="Mínimo" />
+                  <Form.Control required type="number" name="ref_value.male_lower" ref={register} placeholder="Mínimo" />
                 </Col>
               </Row>
             </Form.Group>
@@ -85,10 +85,10 @@ function NewExam() {
               </Form.Label>
               <Row>
                 <Col sm={6}>
-                  <Form.Control type="number" name="ref_value.female_upper" ref={register} placeholder="Máximo" />
+                  <Form.Control required type="number" name="ref_value.female_upper" ref={register} placeholder="Máximo" />
                 </Col>
                 <Col sm={6}>
-                  <Form.Control type="number" name="ref_value.female_lower" ref={register} placeholder="Mínimo" />
+                  <Form.Control required type="number" name="ref_value.female_lower" ref={register} placeholder="Mínimo" />
                 </Col>
               </Row>
             </Form.Group>

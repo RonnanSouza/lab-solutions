@@ -60,7 +60,7 @@ function NewProcedure() {
               Paciente
             </Form.Label>
             <Col sm={10}>
-              <Form.Control type="number" name="pacient_id" ref={register} placeholder="Documento de Identidade" />
+              <Form.Control required type="number" name="pacient_id" ref={register} placeholder="Documento de Identidade" />
             </Col>
           </Form.Group>
           <fieldset>
