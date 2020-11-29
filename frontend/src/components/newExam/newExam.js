@@ -4,12 +4,11 @@ import { Button, Container, Form, Row, Col} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 
 function NewExam() {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
   const history = useHistory();
 
 
   const onSubmit = ( data => {
-    console.log(data)
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -19,7 +18,7 @@ function NewExam() {
       console.log(requestOptions.body)
       fetch('http://localhost:8080/api/exams', requestOptions)
         .then(response => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             console.log(response.json())
             history.push("/")
           } else {

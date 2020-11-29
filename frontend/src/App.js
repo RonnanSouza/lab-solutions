@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import NewExam from './components/newExam/newExam';
-import ExamList from './components/examList/ExamList';
-import { ThemeContext, themes } from './ThemeContext';
+import { themes } from './ThemeContext';
 import { Button, Navbar, Nav, NavDropdown, Form, FormControl} from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -12,6 +11,7 @@ import {
 } from "react-router-dom";
 import NewPacient from './components/newPacient/newPacient';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NewProcedure from './components/newProcedure/newProcedure';
 
 
 
@@ -26,44 +26,6 @@ function App() {
   }
 
   return (
-    // <Router>
-    //   <Button> Ronan</Button>
-    //   <div>
-    //     <nav>
-    //       <ul>
-    //         <li>
-    //           <Link to="/">Home</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/novoProcedimento">Novo procedimento</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/novoPaciente">Novo Paciente</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/resultados">Visualizar Resultado</Link>
-    //         </li>
-    //       </ul>
-    //     </nav>
-
-        // <Switch>
-        //   <Route path="/" exact>
-        //     <h1> Página Inicial</h1>
-        //   </Route>
-        //   <Route path="/novoPaciente" exact>
-        //     <NewPacient></NewPacient>
-        //   </Route>
-
-    //     </Switch>
-
-    //   </div>
-    //   {/* <ThemeContext.Provider value={theme}>
-    //     <h2> Exam List</h2>
-    //     <ExamList changeTheme={toggleTheme}/>
-    //   </ThemeContext.Provider> */}
-
-        
-    // </Router>
     <Router>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#home">Lab Solutions</Navbar.Brand>
@@ -76,6 +38,9 @@ function App() {
             </NavDropdown>
             <NavDropdown title="Exames" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/novoExame">Adicionar</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Resultados" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/novoResultado">Adicionar</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form inline>
@@ -94,6 +59,9 @@ function App() {
         </Route>
         <Route path="/novoExame" exact>
           <NewExam></NewExam>
+        </Route>
+        <Route path="/novoResultado" exact>
+          <NewProcedure></NewProcedure>
         </Route>
       </Switch>
       
