@@ -12,11 +12,14 @@ import {
 import NewPacient from './components/newPacient/newPacient';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewProcedure from './components/newProcedure/newProcedure';
+import ListProcedures from './components/listProcedures/listProcedures';
+import DetailProcedure from './components/detailProcedure/detailProcedure';
 
 
 
 function App() {
 
+  const [ pacientId, setPacientId] = useState();
   const [theme, setTheme] = useState( {
     theme: themes.light,
   });
@@ -44,8 +47,8 @@ function App() {
             </NavDropdown>
           </Nav>
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
+            <FormControl type="number" placeholder="Identidade do Paciente" name="value" onChange={e => setPacientId(e.target.value)} className="mr-sm-4" />
+            <Button as={Link} to="/buscarResultado" variant="success">Buscar Resultados</Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>
@@ -62,6 +65,9 @@ function App() {
         </Route>
         <Route path="/novoResultado" exact>
           <NewProcedure></NewProcedure>
+        </Route>
+        <Route path="/buscarResultado" exact>
+          <ListProcedures pacientId={pacientId}></ListProcedures>
         </Route>
       </Switch>
       
