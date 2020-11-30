@@ -24,7 +24,9 @@ db.pacients = require("./pacientModel")(sequelize, Sequelize);
 db.results = require("./resultModel")(sequelize, Sequelize);
 db.treatments = require("./treatmentModel")(sequelize, Sequelize);
 db.results.belongsTo(db.exams);
+db.results.belongsTo(db.treatments);
 db.exams.hasMany(db.results);
 db.treatments.hasMany(db.results);
 db.treatments.belongsTo(db.pacients);
+
 module.exports = db;
