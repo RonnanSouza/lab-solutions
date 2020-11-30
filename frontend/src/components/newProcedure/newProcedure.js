@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Container, Form, Row, Col} from 'react-bootstrap';
+import { Button, Container, Form, Row, Col, Modal, Alert } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import NewResult from "../newResult/newResult"
 
@@ -11,6 +11,10 @@ function NewProcedure() {
   const [exams, setExams] = useState([]);
   const [results, setResults] = useState([true]);
   const [procedureId, setProcedureId] = useState(-1);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
   useEffect(() => {
@@ -44,7 +48,7 @@ function NewProcedure() {
         ))
         setTimeout(() => (history.push("/")), 500)  // TODO fix it ASAP
       } else {
-        // TODO
+        handleShow()
       }
     });
   })
@@ -73,6 +77,18 @@ function NewProcedure() {
           <Button variant="success" size="lg" type="submit" block>Salvar</Button>
         </Form>
       </form>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Resultado inválido</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Por favor, verifique se o RG do paciente ou os exames estão corretos</Modal.Body>
+        <Modal.Footer>
+          <Button variant="info" onClick={handleClose}>
+            Entendido
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
     </Container>
   );

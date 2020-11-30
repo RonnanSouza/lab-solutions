@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Container, Form, Row, Col, InputGroup } from 'react-bootstrap';
+import { Button, Container, Form, Row, Col, InputGroup, Modal } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 
 
@@ -8,6 +8,9 @@ import { useHistory } from "react-router-dom";
 function NewPacient() {
   const { register, handleSubmit, watch, errors } = useForm();
   const history = useHistory();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
   const onSubmit = ( data => {
@@ -23,7 +26,7 @@ function NewPacient() {
             response.json()
             history.push("/")
           } else {
-            // TODO
+            handleShow()
           }
 
         });
@@ -112,6 +115,17 @@ function NewPacient() {
           <Button type="submit">Adicionar</Button>
         </Form>
       </form>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Paciente inválido</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Por favor, verifique se os dados do paciente estão corretos</Modal.Body>
+        <Modal.Footer>
+          <Button variant="info" onClick={handleClose}>
+            Entendido
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
     </Container>
   )
