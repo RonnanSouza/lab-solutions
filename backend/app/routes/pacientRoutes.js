@@ -5,5 +5,7 @@ module.exports = app => {
 
   router.post("/", pacients.create);
 
+  router.get("/", pacients.findAll);
+
   app.use('/api/pacients', router);
 };

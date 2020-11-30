@@ -21,9 +21,9 @@ const seed = () => {
   return Promise.all([
     db.pacients.create({name: "Ronan", id: 111, age: 25, address: "Rua Wilson Pereira", gender: "male"}),
     db.pacients.create({name: "Fernanda", id: 112, age: 24, address: "Avenida Almirante Barroso", gender: "female"}),
-    db.exams.create({name: "Glicose", code: "GLIC", ref_value: {male_upper: 120, male_lower: 60, female_upper: 120}, female_lower: 60}),
-    db.exams.create({name: "Colesterol", code: "COL", ref_value: {male_upper: 120, male_lower: 60, female_upper: 120}, female_lower: 60}),
-    db.exams.create({name: "Triglicerídeos", code: "TRIG", ref_value: {male_upper: 120, male_lower: 60, female_upper: 120}, female_lower: 60}),
+    db.exams.create({name: "Glicose", code: "GLIC", ref_value: {male_upper: 120, male_lower: 60, female_upper: 120, female_lower: 60}}),
+    db.exams.create({name: "Colesterol", code: "COL", ref_value: {male_upper: 120, male_lower: 60, female_upper: 120, female_lower: 60}}),
+    db.exams.create({name: "Triglicerídeos", code: "TRIG", ref_value: {male_upper: 120, male_lower: 60, female_upper: 120, female_lower: 60}}),
     db.results.create({value: 80}),
     db.results.create({value: 90}),
     db.results.create({value: 150}),

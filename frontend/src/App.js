@@ -13,7 +13,9 @@ import NewPacient from './components/newPacient/newPacient';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewProcedure from './components/newProcedure/newProcedure';
 import ListProcedures from './components/listProcedures/listProcedures';
-import DetailProcedure from './components/detailProcedure/detailProcedure';
+import ListExams from './components/listExams/listExams';
+import ListPacients from './components/listPacients/listPacients';
+
 
 
 
@@ -24,14 +26,14 @@ function App() {
     theme: themes.light,
   });
 
-  function toggleTheme() {
+  const toggleTheme = () =>  {
     theme === themes.dark ? setTheme(themes.light) : setTheme(themes.dark) 
   }
 
   return (
     <Router>
       <ThemeContext.Provider value={theme}>
-        <Navbar bg="light" expand="lg">
+        <Navbar bg={theme} expand="lg">
           <Navbar.Brand href="#home">Lab Solutions</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -39,9 +41,12 @@ function App() {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <NavDropdown title="Pacientes" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/novoPaciente">Adicionar</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/listarPacientes">Listar</NavDropdown.Item>
+
               </NavDropdown>
               <NavDropdown title="Exames" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/novoExame">Adicionar</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/listarExames">Listar</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Resultados" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/novoResultado">Adicionar</NavDropdown.Item>
@@ -69,6 +74,12 @@ function App() {
           </Route>
           <Route path="/buscarResultado" exact>
             <ListProcedures pacientId={pacientId}></ListProcedures>
+          </Route>
+          <Route path="/listarExames" exact>
+            <ListExams></ListExams>
+          </Route>
+          <Route path="/listarPacientes" exact>
+            <ListPacients></ListPacients>
           </Route>
         </Switch>
       </ThemeContext.Provider>
