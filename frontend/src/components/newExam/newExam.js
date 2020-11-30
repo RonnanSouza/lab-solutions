@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Container, Form, Row, Col} from 'react-bootstrap';
+import { Button, Container, Form, Row, Col, Modal} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 
 function NewExam() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
   const onSubmit = ( data => {
@@ -21,7 +24,7 @@ function NewExam() {
           if (response.status === 200) {
             history.push("/")
           } else {
-            // TODO
+            handleShow()
           }
 
         });
@@ -96,6 +99,17 @@ function NewExam() {
           <Button type="submit">Adicionar</Button>
         </Form>
       </form>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Exame inválido</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Por favor, verifique se os dados do exame estão corretos</Modal.Body>
+        <Modal.Footer>
+          <Button variant="info" onClick={handleClose}>
+            Entendido
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
     </Container>
   );
