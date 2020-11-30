@@ -21,6 +21,7 @@ import ListPacients from './components/listPacients/listPacients';
 
 function App() {
 
+  const [ localPacientId, setLocalPacientId] = useState();
   const [ pacientId, setPacientId] = useState();
   const [theme, setTheme] = useState( {
     theme: themes.light,
@@ -53,8 +54,8 @@ function App() {
               </NavDropdown>
             </Nav>
             <Form inline>
-              <FormControl type="number" placeholder="Identidade do Paciente" name="value" onChange={e => setPacientId(e.target.value)} className="mr-sm-4" />
-              <Button as={Link} to="/buscarResultado" variant="success">Buscar Resultados</Button>
+              <FormControl type="number" placeholder="Identidade do Paciente" name="value" onChange={e => setLocalPacientId(e.target.value)} className="mr-sm-4" />
+              <Button onClick={() => {setPacientId(localPacientId)}} as={Link} to="/buscarResultado" variant="success">Buscar Resultados</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>

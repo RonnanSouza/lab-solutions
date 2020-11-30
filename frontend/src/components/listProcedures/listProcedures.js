@@ -29,7 +29,7 @@ function ListProcedures(props) {
     }, (err) => {
       setLoaded(false)
     })
-  }, []) 
+  }, [props.pacientId]) 
 
   if (loaded && procedures.length > 0 ) {
     return(
