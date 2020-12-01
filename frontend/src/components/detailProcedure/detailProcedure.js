@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Form, Container, Row, Col } from 'react-bootstrap';
 
 function DetailProcedure(props) {
-  const [procedures, setProcedures] = useState([]);
-  const [loaded, setLoaded] = useState(false);
+  // const [procedure, setProcedure] = useState;
 
+  useEffect(() => {
+
+  }, [])
   return(
     <Container>
       <Form>
         <Form.Group as={Row} controlId="formPlaintextEmail">
           <Form.Label column sm="2">
-            Email
+            // TODO
           </Form.Label>
           <Col sm="10">
-            <Form.Control plaintext readOnly defaultValue="email@example.com" />
+            <Form.Control plaintext readOnly defaultValue="fetch data for the result"/>
           </Col>
         </Form.Group>
       </Form>

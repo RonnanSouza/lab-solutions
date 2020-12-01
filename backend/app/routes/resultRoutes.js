@@ -5,5 +5,7 @@ module.exports = app => {
 
   router.post("/", results.create);
 
+  router.post("/:id", results.findOne);
+
   app.use('/api/results', router);
 };

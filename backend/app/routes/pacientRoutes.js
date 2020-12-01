@@ -6,6 +6,7 @@ module.exports = app => {
   router.post("/", pacients.create);
 
   router.get("/", pacients.findAll);
+  router.get("/:id", pacients.findOne);
 
   app.use('/api/pacients', router);
 };
