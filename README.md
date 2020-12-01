@@ -17,6 +17,9 @@ Lab solutions is a software to help you manage your clinic lab.
 ## Running backend
 
 `make back`
+~~~
+This will also mock some entries to be easier to test
+~~~
 
 ## DevWeb Deliveries
 
@@ -26,4 +29,3 @@ Lab solutions is a software to help you manage your clinic lab.
 - [x] Jest
 - [x] React Context
 - [x] React Router
-- [ ] Storage/Service Worker
