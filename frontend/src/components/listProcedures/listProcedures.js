@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Container, Alert, Form, Row, Col, Tab} from 'react-bootstrap';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory
+  BrowserRouter as Router
 } from "react-router-dom";
 import DetailProcedure from '../detailProcedure/detailProcedure';
 
@@ -14,9 +10,10 @@ function ListProcedures(props) {
   const [procedures, setProcedures] = useState([]);
   const [pacient, setPacient] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const history = useHistory();
 
   useEffect(() => {
+    setProcedures([])
+    setLoaded(false)
     fetch('http://localhost:8080/api/pacients/'+props.pacientId,
     {
       method: 'GET',
@@ -63,11 +60,6 @@ function ListProcedures(props) {
               </Form.Label>
             </Form.Group>
           </Form>
-          {/* <ListGroup>
-            {procedures.map(procedure => (
-              <ListGroup.Item action as={Link} to="/detalharResultado">Paciente: {procedure.pacientId}, Data: {procedure.createdAt}</ListGroup.Item>
-            ))}
-          </ListGroup> */}
           <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
             <Row>
               <Col sm={4}>
@@ -81,7 +73,7 @@ function ListProcedures(props) {
                 <Tab.Content>
                   {procedures.map(procedure => (
                     <Tab.Pane eventKey={"#link"+procedure.id}>
-                      <DetailProcedure procedureId={procedure.id}/>
+                      <DetailProcedure procedureId={procedure.id} pacientGender={pacient.gender}/>
                     </Tab.Pane>
                   ))}
                 </Tab.Content>

@@ -1,24 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Container, Row, Col } from 'react-bootstrap';
+import { Container, Alert, ListGroup } from 'react-bootstrap';
 
 function DetailProcedure(props) {
-  // const [procedure, setProcedure] = useState;
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
-
+    fetch('http://localhost:8080/api/treatments/'+props.procedureId+'/details',
+    {
+      method: 'GET',
+      mode: 'cors',
+    }
+    )
+    .then(res => res.json())
+    .then(response => {
+      setResults(response)
+    })
   }, [])
+
+  const getVariant = (result => {
+    if ((props.pacientGender === "male") && (result.value > result.ref_value.male_upper || result.value < result.ref_value.male_lower)) {
+      return "danger"
+    }
+    if ((props.pacientGender === "female") && (result.value > result.ref_value.female_upper || result.value < result.ref_value.female_lower)) {
+      return "danger"
+    }
+    return "success"
+  })
+
   return(
     <Container>
-      <Form>
-        <Form.Group as={Row} controlId="formPlaintextEmail">
-          <Form.Label column sm="2">
-            // TODO
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control plaintext readOnly defaultValue="fetch data for the result"/>
-          </Col>
-        </Form.Group>
-      </Form>
+      <ListGroup variant="flush">
+        {results.map(result => (
+          <Alert variant={getVariant(result)}>
+            {result.name}: {result.value}
+          </Alert>
+        ))}
+      </ListGroup>
     </Container>
   )
 }
