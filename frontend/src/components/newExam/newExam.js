@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Container, Form, Row, Col, Modal} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
@@ -18,7 +18,6 @@ function NewExam() {
       body: JSON.stringify(data)
       };
 
-      console.log(requestOptions.body)
       fetch('http://localhost:8080/api/exams', requestOptions)
         .then(response => {
           if (response.status === 200) {

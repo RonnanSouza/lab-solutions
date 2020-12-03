@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Container, Form, Row, Col, Modal, Alert } from 'react-bootstrap';
+import { Button, Container, Form, Row, Col, Modal } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import NewResult from "../newResult/newResult"
 

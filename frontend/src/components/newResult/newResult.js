@@ -12,7 +12,6 @@ function NewResult(props) {
         treatment_id: props.procedureId,
         value: result
       }
-      console.log(data)
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

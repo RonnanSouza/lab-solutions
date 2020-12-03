@@ -22,7 +22,7 @@ function NewPacient() {
 
       fetch('http://localhost:8080/api/pacients', requestOptions)
         .then(response => {
-          if (response.status == 200) {
+          if (response.status === 200) {
             response.json()
             history.push("/")
           } else {
