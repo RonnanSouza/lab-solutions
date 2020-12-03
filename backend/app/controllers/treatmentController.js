@@ -1,6 +1,8 @@
+const { sequelize } = require("../models");
 const db = require("../models");
 const Treatment = db.treatments;
 const Op = db.Sequelize.Op;
+
 
 exports.create = (req, res) => {
     if (!req.body.pacient_id) {
@@ -56,5 +58,27 @@ exports.findResults = (req, res) => {
       message: err.message || "Erro recuperando resultado de exame"
     });
   })
+  
+};
+
+exports.details = async (req, res) => {
+  const id = req.params.id;
+  
+  try {
+    const results = await sequelize.query(`
+    SELECT e.name, e.code, e.ref_value, r.value 
+    FROM exams as e 
+    INNER JOIN results as r 
+    ON e.id = r."examId"
+    WHERE r."treatmentId" = ${id};
+    `, { type: sequelize.QueryTypes.SELECT });
+    res.send(results)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({
+      message: err.message || "Erro recuperando detalhes"
+    });
+  }
+ 
   
 };

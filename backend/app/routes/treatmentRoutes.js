@@ -9,5 +9,7 @@ module.exports = app => {
 
   router.get("/:id", treatments.findResults);
 
+  router.get("/:id/details", treatments.details);
+
   app.use('/api/treatments', router);
 };

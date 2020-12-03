@@ -31,14 +31,16 @@ exports.create = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
+  let resultValue = -1;
+
   Result.findByPk(id)
   .then(data => {
+    resultValue = data.dataValues.value
     Exam.findByPk(data.dataValues.examId)
-  }).then(data => {
-    console.log(data)
-    res.send(data)
-  })
-  .catch(err => {
+    .then(data => {
+      data.dataValues.value = resultValue
+      res.send(data)
+  })}).catch(err => {
     res.status(500).send({
       message: "[Erro recuperando Resultado]" + err.message
     });
