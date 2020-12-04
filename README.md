@@ -10,16 +10,18 @@ Lab solutions is a software to help you manage your clinic lab.
 
 `make test`
 
-## Running frontend
-
-`make front`
-
 ## Running backend
 
-`make back`
+- `make deps` to start the database
+- `make back`
+
 ~~~
 This will also mock some entries to be easier to test
 ~~~
+
+## Running frontend
+
+`make front`
 
 ## DevWeb Deliveries
 
