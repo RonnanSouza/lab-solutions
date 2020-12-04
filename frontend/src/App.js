@@ -16,13 +16,9 @@ import ListProcedures from './components/listProcedures/listProcedures';
 import ListExams from './components/listExams/listExams';
 import ListPacients from './components/listPacients/listPacients';
 
-
-
-
 function App() {
 
   const [ localPacientId, setLocalPacientId] = useState();
-  const [ pacientId, setPacientId] = useState();
   const [theme, setTheme] = useState( {
     theme: themes.light,
   });
@@ -55,7 +51,7 @@ function App() {
             </Nav>
             <Form inline>
               <FormControl type="number" placeholder="Identidade do Paciente" name="value" onChange={e => setLocalPacientId(e.target.value)} className="mr-sm-4" />
-              <Button onClick={() => {setPacientId(localPacientId)}} as={Link} to="/buscarResultado" variant="success">Buscar Resultados</Button>
+              <Button as={Link} to={"/resultado/"+localPacientId} variant="success">Buscar Resultados</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
@@ -73,8 +69,8 @@ function App() {
           <Route path="/novoResultado" exact>
             <NewProcedure></NewProcedure>
           </Route>
-          <Route path="/buscarResultado" exact>
-            <ListProcedures pacientId={pacientId}></ListProcedures>
+          <Route path="/resultado/:id" exact>
+            <ListProcedures></ListProcedures>
           </Route>
           <Route path="/listarExames" exact>
             <ListExams></ListExams>

@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Container, Alert, Form, Row, Col, Tab} from 'react-bootstrap';
 import {
-  BrowserRouter as Router
+  BrowserRouter as Router,
+  useParams
 } from "react-router-dom";
 import DetailProcedure from '../detailProcedure/detailProcedure';
 
 
-function ListProcedures(props) {
+function ListProcedures() {
   const [procedures, setProcedures] = useState([]);
   const [pacient, setPacient] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  let { id } = useParams();
+
 
   useEffect(() => {
+    console.log(id)
     setProcedures([])
     setLoaded(false)
-    fetch('http://localhost:8080/api/pacients/'+props.pacientId,
+    fetch('http://localhost:8080/api/pacients/'+id,
     {
       method: 'GET',
       mode: 'cors',
@@ -29,7 +33,7 @@ function ListProcedures(props) {
       setLoaded(false)
     })
   
-    fetch('http://localhost:8080/api/treatments?pacient_id='+props.pacientId,
+    fetch('http://localhost:8080/api/treatments?pacient_id='+id,
     {
       method: 'GET',
       mode: 'cors',
@@ -45,7 +49,7 @@ function ListProcedures(props) {
     })
     
     
-  }, [props.pacientId]) 
+  }, [id]) 
 
   if (loaded && procedures.length > 0 ) {
     return(
@@ -65,7 +69,7 @@ function ListProcedures(props) {
               <Col sm={4}>
                 <ListGroup>
                   {procedures.map(procedure => (
-                    <ListGroup.Item action href={"#link"+procedure.id}>Resultado do dia {procedure.createdAt}</ListGroup.Item>
+                    <ListGroup.Item action href={"#link"+procedure.id}>Resultado do dia {procedure.createdAt.slice(0, 10)}</ListGroup.Item>
                   ))}
                 </ListGroup>
               </Col>
