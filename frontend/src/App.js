@@ -15,6 +15,7 @@ import NewProcedure from './components/newProcedure/newProcedure';
 import ListProcedures from './components/listProcedures/listProcedures';
 import ListExams from './components/listExams/listExams';
 import ListPacients from './components/listPacients/listPacients';
+import EditExam from './components/editExam/editExam';
 
 function App() {
 
@@ -65,6 +66,9 @@ function App() {
           </Route>
           <Route path="/novoExame" exact>
             <NewExam></NewExam>
+          </Route>
+          <Route path="/editarExame/:id" exact>
+            <EditExam></EditExam>
           </Route>
           <Route path="/novoResultado" exact>
             <NewProcedure></NewProcedure>
