@@ -30,8 +30,8 @@ function DetailProcedure(props) {
   return(
     <Container>
       <ListGroup variant="flush">
-        {results.map(result => (
-          <Alert variant={getVariant(result)}>
+        {results.map((result, idx) => (
+          <Alert key={idx} variant={getVariant(result)}>
             {result.name}: {result.value}
           </Alert>
         ))}

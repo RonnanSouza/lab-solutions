@@ -68,8 +68,8 @@ function NewProcedure() {
             </Col>
           </Form.Group>
           <fieldset>
-            {results.map(() => (
-              <NewResult exams={exams} procedureId={procedureId}></NewResult>
+            {results.map((result, idx) => (
+              <NewResult key={idx} exams={exams} procedureId={procedureId}></NewResult>
             ))}
             <Button onClick={() => (setResults(results => [...results, true]))} >Adicionar exame</Button>
           </fieldset>

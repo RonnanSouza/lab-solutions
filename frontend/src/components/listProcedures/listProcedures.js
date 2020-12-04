@@ -68,15 +68,15 @@ function ListProcedures() {
             <Row>
               <Col sm={4}>
                 <ListGroup>
-                  {procedures.map(procedure => (
-                    <ListGroup.Item action href={"#link"+procedure.id}>Resultado do dia {procedure.createdAt.slice(0, 10)}</ListGroup.Item>
+                  {procedures.map((procedure, idx) => (
+                    <ListGroup.Item action key={idx} href={"#link"+procedure.id}>Resultado do dia {procedure.createdAt.slice(0, 10)}</ListGroup.Item>
                   ))}
                 </ListGroup>
               </Col>
               <Col sm={8}>
                 <Tab.Content>
-                  {procedures.map(procedure => (
-                    <Tab.Pane eventKey={"#link"+procedure.id}>
+                  {procedures.map((procedure, idx) => (
+                    <Tab.Pane key={idx}  eventKey={"#link"+procedure.id}>
                       <DetailProcedure procedureId={procedure.id} pacientGender={pacient.gender}/>
                     </Tab.Pane>
                   ))}

@@ -39,8 +39,8 @@ function NewResult(props) {
         <Col>
           <Form.Control as="select" onChange={(e) => setExamId(e.target.value)} custom>
             <option>Selecione um Exame</option>
-            {props.exams.map(exam => (
-              <option value={exam.id}>{exam.name}</option>
+            {props.exams.map((exam, idx) => (
+              <option key={idx} value={exam.id}>{exam.name}</option>
             ))}
           </Form.Control>
         </Col>

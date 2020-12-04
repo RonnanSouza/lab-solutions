@@ -36,9 +36,11 @@ function ListPacients() {
   if (loaded && pacients.length > 0 ) {
     return(
       <Container>
+        <h2>Pacientes</h2>
+        <br/>
         <ListGroup>
-          {pacients.map(pacient => (
-            <ListGroup.Item action onClick={() => goToProcedures(pacient.id)}>
+          {pacients.map((pacient, idx) => (
+            <ListGroup.Item action key={idx} onClick={() => goToProcedures(pacient.id)}>
               <b>{pacient.name}</b>, RG: {pacient.id}<br/>
               Idade: {pacient.age} <br/>
               Endereço: {pacient.address} <br/>
